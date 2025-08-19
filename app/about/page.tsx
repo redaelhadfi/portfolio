@@ -5,13 +5,13 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { AnimatedBackground } from '@/components/3d/animated-background'
-import { 
-  Brain, 
-  Code, 
-  Award, 
-  Users, 
-  Coffee, 
-  Globe, 
+import {
+  Brain,
+  Code,
+  Award,
+  Users,
+  Coffee,
+  Globe,
   BookOpen,
   Download,
   Calendar,
@@ -132,7 +132,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 p-8">
                   <Image
-                    src="/about/reda-profile.jpg"
+                    src="/reda.jpeg"
                     alt="Reda El Hadfi"
                     width={400}
                     height={500}

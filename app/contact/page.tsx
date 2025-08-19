@@ -24,7 +24,6 @@ import {
   Code, // Changed icon for Full-Stack
   Github,
   Linkedin,
-  Briefcase,
 
 
 } from 'lucide-react'
@@ -114,7 +113,7 @@ export default function ContactPage() {
             </div>
             <h1 className="text-2xl font-bold mb-4">Message Sent!</h1>
             <p className="text-muted-foreground mb-8">
-              Thank you for reaching out, Reda. I'll get back to you within 24 hours.
+              Thank you for reaching out, Reda. I&apos;ll get back to you within 24 hours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button onClick={() => setIsSubmitted(false)}>Send Another Message</Button>
@@ -138,7 +137,7 @@ export default function ContactPage() {
                 From Academia to Application
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                I'm a final-year Software Engineering student passionate about building intelligent, scalable solutions. I am currently seeking a <strong>PFE internship</strong> and am also available for <strong>freelance projects</strong>.
+                I&apos;m a final-year Software Engineering student passionate about building intelligent, scalable solutions. I am currently seeking a <strong>PFE internship</strong> and am also available for <strong>freelance projects</strong>.
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 <Badge variant="secondary"><Clock className="w-3 h-3 mr-1" /> 24h Response Time</Badge>
@@ -331,7 +330,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold mb-2">What technologies are you most passionate about?</h3>
                   <p className="text-sm text-muted-foreground">
-                    I'm passionate about distributed systems, cloud-native architecture (AWS), and applying deep learning to solve real-world business problems.
+                    I&apos;m passionate about distributed systems, cloud-native architecture (AWS), and applying deep learning to solve real-world business problems.
                   </p>
                 </div>
                 <div>

@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { ArrowLeft, ExternalLink, Github, Calendar, Clock, Users, Target, Lightbulb, Cog } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Github, Calendar, Clock, Users, Lightbulb, Cog, Star, MapPin } from 'lucide-react'
 import { AnimatedBackground } from '@/components/3d/animated-background'
 
 interface ProjectPageProps {
@@ -15,23 +15,42 @@ interface ProjectPageProps {
   }>
 }
 
+interface GalleryItem {
+  type: 'image' | 'gradient'
+  title: string
+  src?: string
+  gradient?: string
+}
+
+interface ProjectWithFreelancer {
+  freelancerUrl?: string
+  isFreelance?: boolean
+  [key: string]: unknown
+}
+
 const projects = {
   'ai-career-toolkit': {
     title: 'AI-Powered Career Toolkit',
     description: 'A full-stack career platform using Django and React to generate AI-powered resumes and provide interview preparation.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&auto=format&q=80',
+    image: null,
+    imageGradient: 'from-blue-500 to-blue-600',
     gallery: [
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&auto=format&q=80',
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop&auto=format&q=80',
-      'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&h=400&fit=crop&auto=format&q=80',
+      { type: 'gradient', gradient: 'from-blue-500 to-blue-600', title: 'AI Career Toolkit Dashboard' },
+      { type: 'gradient', gradient: 'from-blue-400 to-indigo-600', title: 'Resume Builder Interface' },
+      { type: 'gradient', gradient: 'from-indigo-500 to-purple-600', title: 'Interview Preparation' },
     ],
     tags: ['React', 'Django', 'OpenAI API', 'JWT', 'Docker', 'AWS'],
-    category: 'AI/Full-Stack',
+    category: 'AI/ML',
     status: 'Completed',
     timeline: '3 months',
     year: '2024',
     client: 'Freelance Project',
     team: 'Solo Developer',
+    isFreelance: true,
+    freelancerUrl: 'https://www.freelancer.com/projects/your-project-link',
+    rating: 5.0,
+    reviews: 12,
+    location: 'Remote',
     overview: `An intelligent career development platform that leverages AI to help job seekers create compelling resumes and prepare for interviews. The system uses advanced language models to analyze job descriptions, generate tailored resumes, and provide personalized interview coaching.`,
     challenge: `Job seekers struggle to create effective resumes that pass ATS systems and stand out to recruiters. Traditional resume builders lack AI-powered optimization and don't provide adequate interview preparation. The challenge was to create an end-to-end solution that addresses both resume creation and interview readiness.`,
     solution: `I developed a comprehensive platform with the following features:
@@ -63,18 +82,23 @@ const projects = {
     title: 'ENSA Khouribga University Website',
     description: 'A modern, responsive website for ENSA Khouribga University to showcase academic programs, attract new students, and highlight faculty excellence.',
     image: '/ensa.png',
+    imageGradient: null,
     gallery: [
-      '/ensa.png',
-      'https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=600&h=400&fit=crop&auto=format&q=80',
-      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop&auto=format&q=80',
+      { type: 'image', src: '/ensa.png', title: 'University Homepage' },
+      { type: 'gradient', gradient: 'from-green-500 to-teal-600', title: 'Programs Section' },
+      { type: 'gradient', gradient: 'from-teal-500 to-blue-600', title: 'Faculty Profiles' },
     ],
     tags: ['Next.js', 'React', 'Tailwind CSS', 'CMS'],
-    category: 'Web Development',
+    category: 'Full-Stack',
     status: 'Live',
     timeline: '2 months',
     year: '2024',
     client: 'ENSA Khouribga University',
     team: 'Solo Developer',
+    isFreelance: false,
+    rating: 4.9,
+    reviews: 8,
+    location: 'Khouribga, Morocco',
     overview: `A modern, responsive website designed to showcase ENSA Khouribga University's academic excellence, programs, and campus life. The site serves as a digital gateway for prospective students, current students, faculty, and stakeholders to access information about the institution.`,
     challenge: `The university needed a modern web presence that could effectively communicate their academic offerings, attract prospective students, and provide easy access to information for current students and faculty. The existing website was outdated and not mobile-friendly, limiting their reach and engagement.`,
     solution: `I created a comprehensive university website with the following features:
@@ -106,11 +130,12 @@ const projects = {
   'real-time-voting-system': {
     title: 'Distributed Real-Time Voting System',
     description: 'Engineered a fault-tolerant, distributed backend capable of processing thousands of votes per second using Kafka for real-time data streaming.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&auto=format&q=80',
+    image: null,
+    imageGradient: 'from-green-500 to-emerald-600',
     gallery: [
-      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format&q=80',
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format&q=80',
-      'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop&auto=format&q=80',
+      { type: 'gradient', gradient: 'from-green-500 to-emerald-600', title: 'Voting Dashboard' },
+      { type: 'gradient', gradient: 'from-emerald-500 to-teal-600', title: 'Real-time Analytics' },
+      { type: 'gradient', gradient: 'from-teal-500 to-cyan-600', title: 'System Monitoring' },
     ],
     tags: ['Java', 'Kafka', 'React', 'Docker'],
     category: 'Distributed Systems',
@@ -119,6 +144,11 @@ const projects = {
     year: '2024',
     client: 'Freelance Project',
     team: '3 developers',
+    isFreelance: true,
+    freelancerUrl: 'https://www.freelancer.com/projects/voting-system-project',
+    rating: 4.8,
+    reviews: 15,
+    location: 'Remote',
     overview: `A highly scalable, fault-tolerant voting system designed to handle massive concurrent loads while ensuring data integrity and real-time processing. Built with Apache Kafka at its core, the system can process thousands of votes per second with guaranteed delivery and consistency.`,
     challenge: `Traditional voting systems struggle with high concurrent loads and lack real-time capabilities. The challenge was to build a system that could handle massive traffic spikes during peak voting periods while maintaining data integrity, providing real-time results, and ensuring fault tolerance across distributed nodes.`,
     solution: `I architected a distributed system using event-driven architecture:
@@ -147,6 +177,56 @@ const projects = {
     liveUrl: '#',
     githubUrl: '#',
   },
+  'bert-pdf-training': {
+    title: 'BERT Training Using PDF Documents',
+    description: 'Developed a custom pipeline to parse, clean, and process PDF documents for training a BERT model, enabling specialized NLP tasks on domain-specific corpora.',
+    image: null,
+    imageGradient: 'from-red-500 to-rose-600',
+    gallery: [
+      { type: 'gradient', gradient: 'from-red-500 to-rose-600', title: 'BERT Model Training' },
+      { type: 'gradient', gradient: 'from-rose-500 to-pink-600', title: 'PDF Processing Pipeline' },
+      { type: 'gradient', gradient: 'from-pink-500 to-purple-600', title: 'Model Performance Metrics' },
+    ],
+    tags: ['Python', 'Machine Learning', 'Data Modeling', 'BERT', 'NLP'],
+    category: 'AI/ML',
+    status: 'Completed',
+    timeline: '6 weeks',
+    year: '2025',
+    client: 'Freelance Project',
+    team: 'Solo Developer',
+    isFreelance: true,
+    freelancerUrl: 'https://www.freelancer.com/projects/bert-nlp-project',
+    rating: 5.0,
+    reviews: 7,
+    location: 'Remote',
+    overview: `A specialized machine learning project focused on training BERT models using PDF documents as training data. The project involved creating a comprehensive pipeline for document processing, text extraction, and model fine-tuning for domain-specific NLP tasks.`,
+    challenge: `Processing PDF documents for machine learning presents unique challenges including inconsistent formatting, embedded images, tables, and various encoding issues. The client needed a robust solution to extract meaningful text from complex PDF structures and use it to train domain-specific BERT models.`,
+    solution: `I developed an end-to-end pipeline that handles:
+    
+    • PDF text extraction with OCR capabilities for scanned documents
+    • Text preprocessing and cleaning pipeline
+    • Custom tokenization for domain-specific vocabulary
+    • BERT model fine-tuning with specialized architectures
+    • Performance monitoring and evaluation metrics
+    • Batch processing capabilities for large document sets
+    • Model deployment and inference optimization`,
+    results: [
+      '92% accuracy on domain-specific tasks',
+      'Processed 10,000+ PDF documents',
+      '40% improvement over baseline models',
+      'Reduced training time by 60% through optimization',
+      'Successfully deployed in production environment',
+    ],
+    technologies: {
+      'ML/AI': ['Python', 'PyTorch', 'Transformers', 'BERT', 'scikit-learn'],
+      'Document Processing': ['PyPDF2', 'pdfplumber', 'Tesseract OCR', 'spaCy'],
+      'Infrastructure': ['Docker', 'AWS', 'MLflow', 'TensorBoard'],
+      'Tools': ['Jupyter', 'Git', 'Poetry', 'Black'],
+    },
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  // Add more projects with similar structure...
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
@@ -173,6 +253,32 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound()
   }
 
+  const renderImage = (item: GalleryItem, index: number) => {
+    if (item.type === 'image' && item.src) {
+      return (
+        <Image
+          key={index}
+          src={item.src}
+          alt={item.title}
+          width={400}
+          height={300}
+          className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300 rounded-lg"
+        />
+      )
+    } else {
+      return (
+        <div
+          key={index}
+          className={`w-full h-48 bg-gradient-to-br ${item.gradient} flex items-center justify-center hover:scale-105 transition-transform duration-300 rounded-lg`}
+        >
+          <div className="text-white text-center p-4">
+            <h4 className="font-semibold text-sm">{item.title}</h4>
+          </div>
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
       {/* 3D Animated Background */}
@@ -196,9 +302,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-6">
-              <Badge variant="outline" className="mb-4">
-                {project.category}
-              </Badge>
+              <div className="flex items-center gap-4 mb-4">
+                <Badge variant="outline">
+                  {project.category}
+                </Badge>
+                {project.isFreelance && (
+                  <Badge variant="secondary" className="bg-green-100 text-green-800">
+                    Freelance Project
+                  </Badge>
+                )}
+              </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 {project.title}
               </h1>
@@ -208,7 +321,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             {/* Project Meta */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
               <div className="flex items-center">
                 <Calendar className="w-5 h-5 text-muted-foreground mr-2" />
                 <div>
@@ -231,24 +344,38 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </div>
               <div className="flex items-center">
-                <Target className="w-5 h-5 text-muted-foreground mr-2" />
+                <Star className="w-5 h-5 text-muted-foreground mr-2" />
                 <div>
-                  <p className="text-sm font-medium">Status</p>
-                  <Badge variant={project.status === 'Completed' ? 'default' : 'secondary'} className="text-xs">
-                    {project.status}
-                  </Badge>
+                  <p className="text-sm font-medium">Rating</p>
+                  <p className="text-sm text-muted-foreground">{project.rating}/5 ({project.reviews} reviews)</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <MapPin className="w-5 h-5 text-muted-foreground mr-2" />
+                <div>
+                  <p className="text-sm font-medium">Location</p>
+                  <p className="text-sm text-muted-foreground">{project.location}</p>
                 </div>
               </div>
             </div>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 mb-8">
-              <Button asChild>
-                <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View Live Project
-                </Link>
-              </Button>
+              {project.isFreelance && (project as ProjectWithFreelancer).freelancerUrl ? (
+                <Button asChild>
+                  <Link href={(project as ProjectWithFreelancer).freelancerUrl!} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View on Freelancer
+                  </Link>
+                </Button>
+              ) : (
+                <Button asChild>
+                  <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View Live Project
+                  </Link>
+                </Button>
+              )}
               <Button variant="outline" asChild>
                 <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                   <Github className="w-4 h-4 mr-2" />
@@ -259,13 +386,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             {/* Main Image */}
             <div className="relative overflow-hidden rounded-lg mb-12">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={800}
-                height={500}
-                className="w-full h-[400px] lg:h-[500px] object-cover"
-              />
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={800}
+                  height={500}
+                  className="w-full h-[400px] lg:h-[500px] object-cover"
+                />
+              ) : (
+                <div className={`w-full h-[400px] lg:h-[500px] bg-gradient-to-br ${project.imageGradient} flex items-center justify-center`}>
+                  <div className="text-white text-center p-8">
+                    <h2 className="text-3xl font-bold mb-4">{project.title}</h2>
+                    <p className="text-lg opacity-90">{project.category}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -322,17 +458,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div>
                   <h3 className="text-xl font-semibold mb-6">Project Gallery</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {project.gallery.map((image, index) => (
-                      <div key={index} className="relative overflow-hidden rounded-lg">
-                        <Image
-                          src={image}
-                          alt={`${project.title} screenshot ${index + 1}`}
-                          width={400}
-                          height={300}
-                          className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    ))}
+                    {project.gallery.map((item, index) => renderImage(item as GalleryItem, index))}
                   </div>
                 </div>
               </div>
@@ -361,6 +487,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <div>
                       <p className="text-sm font-medium mb-1">Team Size</p>
                       <p className="text-sm text-muted-foreground">{project.team}</p>
+                    </div>
+                    <Separator />
+                    <div>
+                      <p className="text-sm font-medium mb-1">Rating</p>
+                      <div className="flex items-center gap-2">
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className={`w-4 h-4 ${i < Math.floor(project.rating) ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} />
+                          ))}
+                        </div>
+                        <span className="text-sm text-muted-foreground">({project.reviews})</span>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -406,6 +544,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </Button>
                   </CardContent>
                 </Card>
+
+                {/* Freelancer Link */}
+                {project.isFreelance && (project as ProjectWithFreelancer).freelancerUrl && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Freelancer Profile</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        This project was completed through Freelancer.com. View the full project details and client feedback.
+                      </p>
+                      <Button asChild className="w-full">
+                        <Link href={(project as ProjectWithFreelancer).freelancerUrl!} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          View on Freelancer
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                )}
               </div>
             </div>
           </div>

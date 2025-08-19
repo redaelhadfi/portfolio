@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star, Quote, Verified, Clock, DollarSign, Briefcase } from "lucide-react";
+import { Star, Quote, Verified, Clock, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Testimonials data now uses the real reviews you provided.
@@ -148,7 +148,7 @@ export function Testimonials() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         {stats.map((stat) => (
                             <div key={stat.label} className="flex flex-col items-center gap-2">
-                                <stat.icon className={`w-10 h-10 ${stat.color || 'text-primary'}`} />
+                                <stat.icon className="w-10 h-10 text-primary" />
                                 <p className="text-3xl font-bold">{stat.value}</p>
                                 <p className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</p>
                             </div>

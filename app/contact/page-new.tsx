@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -12,7 +11,6 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  Calendar, 
   Clock, 
   Send, 
   CheckCircle,

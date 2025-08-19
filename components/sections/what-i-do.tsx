@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BrainCircuit, Server, Cloud, Laptop, CheckCircle } from "lucide-react";
+import { BrainCircuit, Server, Cloud, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Services updated to highlight your expertise in LLMs, RAG, and NLP.
