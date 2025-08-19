@@ -53,13 +53,13 @@ export function Footer() {
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://linkedin.com/in/reda-el-hadfi" target="_blank" rel="noopener noreferrer">
+                <Link href="https://linkedin.com/in/redaelhadfi" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-4 w-4" />
                   <span className="sr-only">LinkedIn</span>
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://freelancer.com/u/redaelhadfi" target="_blank" rel="noopener noreferrer">
+                <Link href="https://www.freelancer.com/u/elhadfi" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4" />
                   <span className="sr-only">Freelancer</span>
                 </Link>

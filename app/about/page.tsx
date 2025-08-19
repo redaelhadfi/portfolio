@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { AnimatedBackground } from '@/components/3d/animated-background'
 import { 
   Brain, 
   Code, 
-  GraduationCap, 
   Award, 
   Users, 
   Coffee, 
@@ -24,38 +24,38 @@ export const metadata: Metadata = {
 }
 
 const skills = [
-  { category: 'AI/ML', items: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Hugging Face', 'OpenCV', 'NLP'] },
-  { category: 'Backend', items: ['Python', 'Node.js', 'FastAPI', 'Express.js', 'Django', 'GraphQL'] },
-  { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Vue.js', 'Tailwind CSS', 'React Native'] },
-  { category: 'Cloud & DevOps', items: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Terraform', 'Microservices'] },
-  { category: 'Databases', items: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'InfluxDB'] },
-  { category: 'Other', items: ['Git', 'Linux', 'Agile/Scrum', 'System Design', 'API Design'] },
+  { category: 'Programming Languages', items: ['Python', 'Java', 'JavaScript', 'SQL', 'TypeScript', 'HTML'] },
+  { category: 'Backend Development', items: ['Django', 'Flask', 'Node.js', 'REST APIs', 'FastAPI', 'Express.js'] },
+  { category: 'Frontend Development', items: ['React', 'Next.js', 'Angular', 'Tailwind CSS', 'Bootstrap', 'Vue.js'] },
+  { category: 'AI/Machine Learning', items: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenCV', 'Pandas', 'CNN'] },
+  { category: 'Cloud & DevOps', items: ['AWS (EC2, S3, Lambda)', 'Docker', 'CI/CD', 'Git', 'Linux'] },
+  { category: 'Databases', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'SQLite'] },
 ]
 
 const achievements = [
   {
-    title: 'Academic Excellence',
-    description: 'Top 5% in Computer Science program at INPT',
-    icon: GraduationCap,
+    title: 'Freelancer Success',
+    description: '5.0-star rating with 48+ reviews on Freelancer.com',
+    icon: Award,
     year: '2024',
   },
   {
-    title: 'AI Research Publication',
-    description: 'Published research on neural network optimization',
-    icon: BookOpen,
-    year: '2023',
+    title: 'Student Leadership',
+    description: 'Vice President of Student Council at INPT',
+    icon: Users,
+    year: '2024',
   },
   {
-    title: 'Hackathon Winner',
-    description: 'First place in National AI Innovation Challenge',
-    icon: Award,
-    year: '2023',
-  },
-  {
-    title: 'Open Source Contributor',
-    description: '500+ contributions to ML and web frameworks',
+    title: 'Technical Excellence',
+    description: '45+ backend projects with Python & Django',
     icon: Code,
-    year: '2022-2024',
+    year: '2023',
+  },
+  {
+    title: 'Data Science Impact',
+    description: '98% accuracy in automated data extraction using CNN',
+    icon: Brain,
+    year: '2023',
   },
 ]
 
@@ -84,14 +84,20 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="flex items-center mb-4">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
+      {/* 3D Animated Background */}
+      <div className="fixed top-0 left-0 w-full h-full -z-10">
+        <AnimatedBackground />
+      </div>
+      
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="py-16 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <div className="flex items-center mb-4">
                   <Badge variant="outline" className="mr-3">
                     About Me
                   </Badge>
@@ -104,9 +110,10 @@ export default function AboutPage() {
                   Crafting the Future with AI & Code
                 </h1>
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  I&apos;m a passionate AI Architect and Full-Stack Engineer currently in my final year at INPT. 
-                  I specialize in building intelligent systems that solve real-world problems, combining cutting-edge 
-                  AI research with practical software engineering.
+                  I&apos;m a Data and Software Engineering student at INPT, seeking a Research Assistant internship (PFE) 
+                  to contribute to cutting-edge technology and enterprise software innovation. With 45+ successful freelance projects 
+                  and a 5.0-star rating on Freelancer.com, I specialize in architecting backend systems and intelligent applications 
+                  that solve real-world problems.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg">
@@ -333,6 +340,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   )
 }

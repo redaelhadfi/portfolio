@@ -1,11 +1,14 @@
-import { Metadata } from 'next'
+// Client component for interactive resume page
+'use client'
+
 import Link from 'next/link'
+import { useEffect } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { AnimatedBackground } from '@/components/3d/animated-background'
 import { 
   Download, 
-  Printer, 
   Mail, 
   Phone, 
   MapPin, 
@@ -21,176 +24,134 @@ import {
   ExternalLink
 } from 'lucide-react'
 
-export const metadata: Metadata = {
-  title: 'Resume | Reda El Hadfi - AI Architect & Full-Stack Engineer',
-  description: 'Download or view the professional resume of Reda El Hadfi, AI Architect and Full-Stack Engineer.',
-}
-
 const personalInfo = {
   name: 'Reda El Hadfi',
-  title: 'AI Architect & Full-Stack Engineer',
-  email: 'reda.elhadfi@inpt.ac.ma',
-  phone: '+212 6XX XXX XXX',
+  title: 'Data & Software Engineering Student | Research Assistant Intern',
+  email: 'redaelhadfi1@gmail.com',
+  phone: '+212 684233470',
   location: 'Rabat, Morocco',
   website: 'https://reda-elhadfi.com',
-  linkedin: 'linkedin.com/in/reda-elhadfi',
+  linkedin: 'linkedin.com/in/redaelhadfi',
   github: 'github.com/redaelhadfi',
 }
 
-const professionalSummary = `Innovative AI Architect and Full-Stack Engineer with 3+ years of experience building scalable AI solutions and modern web applications. Currently pursuing final year at INPT with specialization in Artificial Intelligence and Software Engineering. Proven track record of delivering 15+ successful projects across multiple industries, with expertise in machine learning, deep learning, and full-stack development using modern frameworks.`
+const professionalSummary = `Data and Software Engineering student seeking a Research Assistant internship (PFE) to contribute to cutting-edge technology and enterprise software innovation. Passionate about leveraging backend development, data science, and cloud computing skills to build robust and scalable solutions. As a freelance Software Engineer, I have architected backend systems and REST APIs for 45+ projects using Python and Django, achieving a 5.0-star rating across 48 reviews with 100% on-time delivery.`
 
 const experience = [
   {
-    title: 'AI Research Intern',
-    company: 'Morocco AI Research Lab',
-    location: 'Rabat, Morocco',
-    period: 'Jun 2024 - Present',
-    achievements: [
-      'Developed novel CNN architecture improving image classification accuracy by 12%',
-      'Published research paper on neural network optimization techniques',
-      'Led federated learning project with international research collaboration',
-      'Mentored 3 junior researchers on machine learning best practices',
-    ],
-  },
-  {
-    title: 'Full-Stack Developer',
-    company: 'TechStart Solutions',
-    location: 'Casablanca, Morocco',
-    period: 'Jan 2024 - May 2024',
-    achievements: [
-      'Architected and developed 3 web applications serving 10,000+ users',
-      'Reduced application load times by 40% through performance optimization',
-      'Implemented CI/CD pipelines reducing deployment time by 60%',
-      'Established coding standards and led technical reviews for development team',
-    ],
-  },
-  {
-    title: 'Machine Learning Engineer Intern',
-    company: 'DataTech Morocco',
-    location: 'Rabat, Morocco',
-    period: 'Jul 2023 - Sep 2023',
-    achievements: [
-      'Built predictive models achieving 94% accuracy for customer churn prediction',
-      'Optimized data processing pipeline reducing computation time by 35%',
-      'Created automated model monitoring and retraining system',
-      'Presented ML insights to C-level executives and key stakeholders',
-    ],
-  },
-  {
-    title: 'Web Development Freelancer',
-    company: 'Self-Employed',
+    title: 'Software Engineer',
+    company: 'Freelancer.com',
     location: 'Remote',
-    period: 'Jan 2022 - Dec 2023',
+    period: 'Nov 2023 - Present',
     achievements: [
-      'Delivered 15+ web projects for clients across e-commerce, education, healthcare',
-      'Maintained 98% client satisfaction rate with 12+ five-star reviews',
-      'Generated $25K+ revenue while maintaining full-time academic studies',
-      'Built long-term partnerships with 5 recurring enterprise clients',
+      'Architected backend systems and REST APIs for 45+ projects using Python, Django, and Flask with PostgreSQL',
+      'Deployed scalable applications on AWS using Docker and CI/CD pipelines to enhance reliability and reduce deployment times',
+      'Achieved a 5.0-star rating across 48 reviews by delivering high-quality code and clear communication',
+      'Maintained 100% on-time delivery rate and 100% on-budget completion rate',
+    ],
+  },
+  {
+    title: 'Data Scientist',
+    company: 'Experio',
+    location: 'Casablanca, Morocco',
+    period: 'Jun 2023 - Jan 2024',
+    achievements: [
+      'Automated Table Detection & Information Extraction Project using deep learning',
+      'Implemented robust solution using CNNs for precise table identification in images',
+      'Integrated OCR (Tesseract) to extract structured data from recognized tables',
+      'Achieved 98% detection accuracy, reducing manual data entry workload by over 95%',
     ],
   },
 ]
 
 const education = [
   {
-    degree: 'Engineering Degree in Computer Science',
+    degree: 'Engineering Degree in Data and Software Engineering',
     school: 'National Institute of Posts and Telecommunications (INPT)',
     location: 'Rabat, Morocco',
     period: '2022 - 2025',
     details: [
-      'Current GPA: 3.8/4.0 (Top 5% of class)',
-      'Specialization: Artificial Intelligence & Software Engineering',
-      'Research: "Federated Learning for Privacy-Preserving AI"',
-      'Leadership: President of AI & Robotics Club (2023-2024)',
+      'Data and Software Engineering specialization',
+      'Seeking Research Assistant internship (PFE) opportunities',
+      'Vice President of Student Council (2024)',
+      'Member of CIT INPT - Computer & Information Technology Club',
     ],
   },
   {
-    degree: 'Preparatory Classes in Mathematics and Physics',
-    school: 'Lycée Mohammed V',
-    location: 'Casablanca, Morocco',
+    degree: 'Diploma in Scientific and Technical University Studies (DEUST)',
+    school: 'Faculty of Sciences and Technologies',
+    location: 'Fez, Morocco',
     period: '2020 - 2022',
     details: [
-      'Top 10% in national competitive exam (CNC)',
-      'Mathematics Olympiad regional finalist',
-      'Advanced coursework in Mathematics, Physics, and Computer Science',
+      'University Diploma in Scientific and Technical Studies',
+      'Preparatory program for engineering schools',
+      'Strong foundation in mathematics and computer science fundamentals',
     ],
   },
 ]
 
 const skills = {
-  'AI/Machine Learning': [
-    'TensorFlow', 'PyTorch', 'Scikit-learn', 'Hugging Face', 'OpenCV', 'Pandas', 'NumPy'
-  ],
   'Programming Languages': [
-    'Python', 'JavaScript/TypeScript', 'Java', 'C++', 'SQL', 'R'
+    'Python', 'Java', 'JavaScript', 'SQL', 'TypeScript', 'HTML', 'CSS'
   ],
-  'Web Development': [
-    'React', 'Next.js', 'Vue.js', 'Node.js', 'Express.js', 'FastAPI', 'Django'
+  'Backend Development': [
+    'Django', 'Flask', 'Node.js', 'REST APIs', 'FastAPI', 'Express.js'
+  ],
+  'Frontend Development': [
+    'React', 'Next.js', 'Angular', 'Tailwind CSS', 'Bootstrap', 'Vue.js'
+  ],
+  'AI/Machine Learning': [
+    'TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenCV', 'Pandas', 'NumPy', 'CNN', 'OCR'
   ],
   'Cloud & DevOps': [
-    'AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Terraform', 'Linux', 'Git'
+    'AWS (EC2, S3, Lambda, Rekognition)', 'Docker', 'CI/CD', 'Git', 'Linux'
   ],
   'Databases': [
-    'PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'MySQL'
-  ],
-  'Tools & Frameworks': [
-    'Tailwind CSS', 'GraphQL', 'REST APIs', 'Microservices', 'Agile/Scrum'
+    'PostgreSQL', 'MySQL', 'MongoDB', 'SQLite'
   ],
 }
 
 const certifications = [
-  'AWS Certified Solutions Architect - Associate (2024)',
-  'TensorFlow Developer Certificate - Google (2024)',
-  'Professional Scrum Master I (PSM I) - Scrum.org (2023)',
-  'Meta Front-End Developer Certificate (2023)',
+  'Supervised Machine Learning: Regression and Classification - DeepLearning.AI (2023)',
+  'Python Level 1 - Freelancer.com (2023)',
+  'US English Level 1 - Freelancer.com (2023)',
+  'Preferred Freelancer Program SLA - Freelancer.com (2024)',
 ]
 
 const achievements = [
-  'Winner - National AI Innovation Challenge (2023)',
-  'Published Research Paper - Neural Network Optimization (2023)',
-  'Open Source Contributor - 500+ contributions (2022-2024)',
-  'Dean\'s List - Academic Excellence (2022, 2023, 2024)',
+  'Freelancer.com: 5.0-star rating with 48 reviews and 100% job success rate',
+  '30+ Five-star reviews milestone achieved on Freelancer.com',
+  'Vice President of Student Council at INPT (2024)',
+  'Member of CIT INPT - Computer & Information Technology Club',
+  '45+ successful backend projects delivered using Python and Django',
 ]
 
 export default function ResumePage() {
+  useEffect(() => {
+    document.title = 'Resume | Reda El Hadfi - AI Architect & Full-Stack Engineer'
+  }, [])
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-card border-b">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-              <div>
-                <h1 className="text-3xl font-bold text-foreground mb-2">
-                  Professional Resume
-                </h1>
-                <p className="text-muted-foreground">
-                  Download or view my complete professional profile
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Button size="lg" className="flex-1 sm:flex-none">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download PDF
-                </Button>
-                <Button variant="outline" size="lg" onClick={() => window.print()}>
-                  <Printer className="w-4 h-4 mr-2" />
-                  Print
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/contact">
-                    <Mail className="w-4 h-4 mr-2" />
-                    Contact
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="min-h-screen bg-background print:bg-white relative"
+      style={{
+        background: 'linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%)',
+      }}
+    >
+      <AnimatedBackground />
+      
+      {/* Download PDF Button */}
+      <div className="fixed top-4 right-4 z-20 print:hidden">
+        <Button asChild variant="default" size="sm">
+          <a href="/REDA_ELHADFI_Resume.pdf" download>
+            <Download className="w-4 h-4 mr-2" />
+            Download PDF
+          </a>
+        </Button>
       </div>
 
       {/* Resume Content */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto bg-card rounded-lg border print:border-0 print:shadow-none">
+      <div className="container mx-auto px-4 py-8 relative z-10">
+        <div className="max-w-4xl mx-auto bg-card/80 backdrop-blur-sm rounded-lg border print:border-0 print:shadow-none print:bg-white print:backdrop-blur-none">
           <div className="p-8 print:p-6">
             {/* Personal Info Header */}
             <header className="text-center mb-8 print:mb-6">

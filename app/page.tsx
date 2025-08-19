@@ -1,13 +1,16 @@
 'use client'
 
-import { HeroSection } from "@/components/sections/hero"
-import { TrustStrip } from "@/components/sections/trust-strip"
-import { FeaturedProjects } from "@/components/sections/featured-projects"
-import { WhatIDo } from "@/components/sections/what-i-do"
-import { Testimonials } from "@/components/sections/testimonials"
-import { CTABand } from "@/components/sections/cta-band"
-import { FloatingActionButton } from "@/components/ui/floating-action-button"
+import { lazy, Suspense } from "react"
+import { HeroSection } from "@/components/sections/hero" // Keep hero section for immediate loading
 import { AnimatedBackground } from "@/components/3d/animated-background"
+
+// Lazy load non-critical sections
+const TrustStrip = lazy(() => import("@/components/sections/trust-strip").then(mod => ({ default: mod.TrustStrip })))
+const FeaturedProjects = lazy(() => import("@/components/sections/featured-projects").then(mod => ({ default: mod.FeaturedProjects })))
+const WhatIDo = lazy(() => import("@/components/sections/what-i-do").then(mod => ({ default: mod.WhatIDo })))
+const Testimonials = lazy(() => import("@/components/sections/testimonials").then(mod => ({ default: mod.Testimonials })))
+const CTABand = lazy(() => import("@/components/sections/cta-band").then(mod => ({ default: mod.CTABand })))
+const FloatingActionButton = lazy(() => import("@/components/ui/floating-action-button").then(mod => ({ default: mod.FloatingActionButton })))
 
 export default function HomePage() {
   return (
@@ -27,16 +30,19 @@ export default function HomePage() {
               "https://github.com/redaelhadfi"
             ],
             "knowsAbout": [
-              "Software Development",
-              "Web Development",
-              "Next.js",
+              "Software Engineering",
+              "Backend Development", 
+              "AI & Machine Learning",
+              "Python",
+              "Django", 
+              "Flask",
               "React",
-              "TypeScript",
-              "JavaScript",
-              "Node.js",
-              "Tailwind CSS",
-              "Full-Stack Development",
-              "Artificial Intelligence"
+              "Next.js",
+              "AWS",
+              "Docker",
+              "Data Science",
+              "Computer Vision",
+              "REST APIs"
             ],
             "address": {
               "@type": "PostalAddress",
@@ -54,27 +60,39 @@ export default function HomePage() {
         </div>
         
         <div className="relative z-10">
-          {/* Hero Section */}
+          {/* Hero Section - Load immediately */}
           <HeroSection />
           
-          {/* Trust Strip */}
-          <TrustStrip />
+          {/* Trust Strip - Lazy loaded */}
+          <Suspense fallback={<div className="h-20 bg-black/20 animate-pulse" />}>
+            <TrustStrip />
+          </Suspense>
           
-          {/* Featured Projects */}
-          <FeaturedProjects />
+          {/* Featured Projects - Lazy loaded */}
+          <Suspense fallback={<div className="h-96 bg-black/20 animate-pulse" />}>
+            <FeaturedProjects />
+          </Suspense>
           
-          {/* Services */}
-          <WhatIDo />
+          {/* Services - Lazy loaded */}
+          <Suspense fallback={<div className="h-96 bg-black/20 animate-pulse" />}>
+            <WhatIDo />
+          </Suspense>
           
-          {/* Testimonials */}
-          <Testimonials />
+          {/* Testimonials - Lazy loaded */}
+          <Suspense fallback={<div className="h-96 bg-black/20 animate-pulse" />}>
+            <Testimonials />
+          </Suspense>
           
-          {/* CTA */}
-          <CTABand />
+          {/* CTA - Lazy loaded */}
+          <Suspense fallback={<div className="h-32 bg-black/20 animate-pulse" />}>
+            <CTABand />
+          </Suspense>
         </div>
 
-        {/* Floating Action Button */}
-        <FloatingActionButton />
+        {/* Floating Action Button - Lazy loaded */}
+        <Suspense fallback={null}>
+          <FloatingActionButton />
+        </Suspense>
       </main>
     </>
   )

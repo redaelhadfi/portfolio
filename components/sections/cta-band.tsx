@@ -64,7 +64,7 @@ export function CTABand() {
               viewport={{ once: true }}
             >
               Ready to Build{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-primary to-accent animate-gradient">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 animate-gradient">
                 Something Amazing
               </span>
               ?
@@ -77,7 +77,7 @@ export function CTABand() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Let's collaborate to bring your vision to life. From concept to deployment, 
+              Let&apos;s collaborate to bring your vision to life. From concept to deployment, 
               I deliver{" "}
               <span className="text-foreground font-semibold">high-quality software solutions</span>{" "}
               that exceed expectations and drive real business results.

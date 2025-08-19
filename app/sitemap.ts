@@ -46,12 +46,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Dynamic project pages
   const projectSlugs = [
-    'ai-document-analyzer',
-    'smart-inventory-system',
-    'blockchain-voting-platform',
-    'ml-recommendation-engine',
-    'iot-monitoring-dashboard',
-    'ai-chatbot-platform'
+    'ai-career-toolkit',
+    'ensa-khouribga-website',
+    'real-time-voting-system'
   ]
 
   const projectPages = projectSlugs.map((slug) => ({

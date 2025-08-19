@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { CursorGlow } from "@/components/ui/cursor-glow";
+import { PerformanceMonitor } from "@/components/ui/performance-monitor";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -60,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -70,7 +71,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange
         >
           <Header />
@@ -79,6 +80,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <CursorGlow />
+          <PerformanceMonitor />
         </ThemeProvider>
       </body>
     </html>

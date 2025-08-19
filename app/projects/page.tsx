@@ -6,116 +6,243 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ExternalLink, Github, Calendar, Clock } from 'lucide-react'
+import { AnimatedBackground } from '@/components/3d/animated-background'
 
 export const metadata: Metadata = {
   title: 'Projects | Reda El Hadfi - AI Architect & Full-Stack Engineer',
   description: 'Explore my portfolio of AI and full-stack development projects, showcasing innovative solutions and technical excellence.',
 }
 
+// Combined list of original and new projects
 const projects = [
+  // --- Original Projects ---
   {
-    id: 'ai-document-analyzer',
-    title: 'AI Document Analyzer',
-    description: 'Advanced document processing system using computer vision and NLP for automated content extraction and analysis.',
-    image: '/projects/ai-document-analyzer.jpg',
-    tags: ['Python', 'TensorFlow', 'FastAPI', 'React', 'Docker'],
+    id: 'ai-career-toolkit',
+    title: 'AI-Powered Career Toolkit',
+    description: 'A full-stack career platform using Django and React to generate AI-powered resumes and provide interview preparation.',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['React', 'Django', 'OpenAI API', 'JWT', 'Docker', 'AWS'],
     category: 'AI/ML',
     status: 'Completed',
     timeline: '3 months',
     year: '2024',
-    client: 'TechCorp Solutions',
+    client: 'Freelance Project',
     featured: true,
   },
   {
-    id: 'smart-inventory-system',
-    title: 'Smart Inventory Management',
-    description: 'Real-time inventory tracking system with predictive analytics and automated reordering capabilities.',
-    image: '/projects/smart-inventory.jpg',
-    tags: ['Node.js', 'MongoDB', 'Next.js', 'TypeScript', 'AWS'],
+    id: 'ensa-khouribga-website',
+    title: 'ENSA Khouribga University Website',
+    description: 'A modern, responsive website for ENSA Khouribga University to showcase academic programs, attract new students, and highlight faculty excellence.',
+    image: '/ensa.png',
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'CMS'],
+    category: 'Full-Stack',
+    status: 'Live',
+    timeline: '2 months',
+    year: '2024',
+    client: 'ENSA Khouribga University',
+    featured: true,
+  },
+  {
+    id: 'real-time-voting-system',
+    title: 'Distributed Real-Time Voting System',
+    description: 'Engineered a fault-tolerant, distributed backend capable of processing thousands of votes per second using Kafka for real-time data streaming.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Java', 'Kafka', 'React', 'Docker'],
+    category: 'Distributed Systems',
+    status: 'Completed',
+    timeline: '4 months',
+    year: '2024',
+    client: 'Freelance Project',
+    featured: true,
+  },
+  // --- New Projects from Your List ---
+  {
+    id: 'bert-pdf-training',
+    title: 'BERT Training Using PDF Documents',
+    description: 'Developed a custom pipeline to parse, clean, and process PDF documents for training a BERT model, enabling specialized NLP tasks on domain-specific corpora.',
+    image: 'https://images.unsplash.com/photo-1583521268322-a7f45f7c5e1e?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'Machine Learning (ML)', 'Data Modeling', 'BERT', 'NLP'],
+    category: 'AI/ML',
+    status: 'Completed',
+    timeline: '6 weeks',
+    year: '2025',
+    client: 'Freelance Project',
+    featured: true,
+  },
+  {
+    id: 'youtube-transcription-app',
+    title: 'Python Web App for YouTube Transcription',
+    description: 'Built a full-stack web application that leverages AI to transcribe YouTube videos automatically, providing users with downloadable and searchable scripts.',
+    image: 'https://images.unsplash.com/photo-1611162617213-7d724e16e599?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'Flask', 'React', 'Natural Language Processing', 'AI'],
+    category: 'AI/ML',
+    status: 'Completed',
+    timeline: '1 month',
+    year: '2025',
+    client: 'Freelance Project',
+    featured: true,
+  },
+  {
+    id: 'web-scraping-schneider-electric',
+    title: 'Web Scraping for Schneider Electric Data',
+    description: 'Engineered a robust web scraping program to automatically collect and structure product data, handling dynamic content and implementing anti-blocking measures.',
+    image: 'https://images.unsplash.com/photo-1629904853716-f0bc64219b1b?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'BeautifulSoup', 'Selenium', 'Data Extraction'],
     category: 'Full-Stack',
     status: 'Completed',
-    timeline: '4 months',
-    year: '2024',
-    client: 'RetailFlow Inc.',
+    timeline: '3 weeks',
+    year: '2025',
+    client: 'Freelance Project',
     featured: true,
   },
   {
-    id: 'blockchain-voting-platform',
-    title: 'Blockchain Voting Platform',
-    description: 'Secure, transparent voting system built on Ethereum with smart contracts and decentralized architecture.',
-    image: '/projects/blockchain-voting.jpg',
-    tags: ['Solidity', 'Web3.js', 'React', 'Ethereum', 'IPFS'],
-    category: 'Blockchain',
+    id: '3d-model-software-dev',
+    title: '3D Model Creation from Scanned Files',
+    description: 'Developed custom software to process and convert 3D scan data into optimized, high-quality 3D models for rendering and visualization purposes.',
+    image: 'https://images.unsplash.com/photo-1639922557343-284594c34a2e?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', '3D Rendering', 'Software Development', '3D Scanning'],
+    category: 'Full-Stack',
     status: 'Completed',
-    timeline: '5 months',
-    year: '2023',
-    client: 'Democratic Tech Foundation',
-    featured: false,
-  },
-  {
-    id: 'ml-recommendation-engine',
-    title: 'ML Recommendation Engine',
-    description: 'Personalized recommendation system using collaborative filtering and deep learning techniques.',
-    image: '/projects/ml-recommendation.jpg',
-    tags: ['Python', 'PyTorch', 'Redis', 'GraphQL', 'Kubernetes'],
-    category: 'AI/ML',
-    status: 'Completed',
-    timeline: '6 months',
-    year: '2023',
-    client: 'StreamTech Media',
+    timeline: '2 months',
+    year: '2024',
+    client: 'Freelance Project',
     featured: true,
   },
   {
-    id: 'iot-monitoring-dashboard',
-    title: 'IoT Monitoring Dashboard',
-    description: 'Real-time IoT device monitoring with data visualization and alert management system.',
-    image: '/projects/iot-dashboard.jpg',
-    tags: ['Vue.js', 'Node.js', 'InfluxDB', 'Grafana', 'MQTT'],
-    category: 'IoT',
+    id: 'ai-jockey-betting-program',
+    title: 'AI Jockey Challenge Betting Program',
+    description: 'Created an AI-driven program to analyze race data and predict outcomes for the "Jockey Challenge," utilizing web scraping and machine learning models.',
+    image: 'https://images.unsplash.com/photo-1599232230776-619f71692e62?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Java', 'Python', 'Web Scraping', 'AI', 'Software Architecture'],
+    category: 'AI/ML',
     status: 'Completed',
-    timeline: '3 months',
-    year: '2023',
-    client: 'IndustrialTech Ltd.',
+    timeline: '5 weeks',
+    year: '2025',
+    client: 'Freelance Project',
     featured: false,
   },
   {
-    id: 'ai-chatbot-platform',
-    title: 'AI Chatbot Platform',
-    description: 'Multi-tenant conversational AI platform with natural language understanding and custom integrations.',
-    image: '/projects/ai-chatbot.jpg',
-    tags: ['Python', 'Rasa', 'FastAPI', 'PostgreSQL', 'Docker'],
+    id: 'kaggle-text-generation',
+    title: 'Kaggle Notebook: Text Generation for Python Code',
+    description: 'Authored a Kaggle notebook employing generative AI to produce Python code from natural language prompts, demonstrating advanced model fine-tuning.',
+    image: 'https://images.unsplash.com/photo-1678566153959-869e5a88ea54?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'Machine Learning (ML)', 'Generative AI', 'Kaggle'],
     category: 'AI/ML',
-    status: 'In Progress',
-    timeline: '4 months',
-    year: '2024',
-    client: 'ChatFlow Solutions',
+    status: 'Completed',
+    timeline: '2 weeks',
+    year: '2025',
+    client: 'Freelance Project',
     featured: false,
+  },
+  {
+    id: 'dynamic-programming-dag-path',
+    title: 'Dynamic Programming Expert for DAG Path Problem',
+    description: 'Designed and implemented an efficient algorithm using dynamic programming to find the optimal path in a Directed Acyclic Graph (DAG) for a logistics problem.',
+    image: 'https://images.unsplash.com/photo-1543357485-d857de7ee455?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'Algorithm', 'Dynamic Programming', 'Data Structures'],
+    category: 'Full-Stack',
+    status: 'Completed',
+    timeline: '3 weeks',
+    year: '2025',
+    client: 'Freelance Project',
+    featured: false,
+  },
+  {
+    id: 'body-motions-time-series',
+    title: 'Body Motions Model for Time-Series Analysis',
+    description: 'Developed a time-series analysis model to classify and predict body motions from sensor data, applying deep learning techniques for high accuracy.',
+    image: 'https://images.unsplash.com/photo-1581009137052-c615d5769336?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'TensorFlow', 'Time-Series Analysis', 'Data Science'],
+    category: 'AI/ML',
+    status: 'Completed',
+    timeline: '1 month',
+    year: '2025',
+    client: 'Freelance Project',
+    featured: true,
+  },
+  {
+    id: 'graph-isomorphism-algorithm',
+    title: 'Graph Isomorphism Recognition Algorithm',
+    description: 'Implemented a complex algorithm in C++ to determine if two graphs are isomorphic, featuring a custom GUI for visualization and interaction.',
+    image: 'https://images.unsplash.com/photo-1635070049013-d375b4122b16?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['C++', 'Algorithm', 'Software Architecture', 'GUI'],
+    category: 'Full-Stack',
+    status: 'Completed',
+    timeline: '1 month',
+    year: '2024',
+    client: 'Freelance Project',
+    featured: false,
+  },
+  {
+    id: 'ai-saas-tech-documentation',
+    title: 'AI-SaaS Startup Technical Documentation',
+    description: 'Authored comprehensive technical documentation and system architecture diagrams for an AI-SaaS platform, covering AWS infrastructure, CI/CD pipelines, and OAuth.',
+    image: 'https://images.unsplash.com/photo-1542744095-291d1f67b221?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Software Architecture', 'AWS', 'OAuth', 'CI/CD', 'Diagrams'],
+    category: 'Distributed Systems',
+    status: 'Completed',
+    timeline: '3 weeks',
+    year: '2024',
+    client: 'Freelance Project',
+    featured: false,
+  },
+  {
+    id: 'midjourney-automation',
+    title: 'Midjourney Automation Project',
+    description: 'Developed a Python-based automation script using Make.com and Airtable APIs to streamline the image generation workflow with Midjourney.',
+    image: 'https://images.unsplash.com/photo-1679412476483-0493e8392630?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'Airtable', 'Automation', 'Make.com', 'API Integration'],
+    category: 'AI/ML',
+    status: 'Completed',
+    timeline: '2 weeks',
+    year: '2024',
+    client: 'Freelance Project',
+    featured: false,
+  },
+  {
+    id: 'react-python-api-components',
+    title: 'React & Python Developer for API Components',
+    description: 'Built and integrated React components with a Python backend, developing RESTful API endpoints and managing data flow with PostgreSQL.',
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop&auto=format&q=80',
+    tags: ['Python', 'PostgreSQL', 'React.js', 'API Development'],
+    category: 'Full-Stack',
+    status: 'Completed',
+    timeline: '1 month',
+    year: '2024',
+    client: 'Freelance Project',
+    featured: true,
   },
 ]
 
-const categories = ['All', 'AI/ML', 'Full-Stack', 'Blockchain', 'IoT']
+const categories = ['All', 'AI/ML', 'Full-Stack', 'Distributed Systems']
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header Section */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              My Projects
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              A showcase of innovative solutions, from AI-powered applications to full-stack platforms. 
-              Each project represents a unique challenge solved with cutting-edge technology and best practices.
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              <Badge variant="secondary" className="text-sm">
-                {projects.length} Projects Completed
-              </Badge>
-              <Badge variant="secondary" className="text-sm">
-                Multiple Industries
-              </Badge>
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
+      {/* 3D Animated Background */}
+      <div className="fixed top-0 left-0 w-full h-full -z-10">
+        <AnimatedBackground />
+      </div>
+      
+      <div className="relative z-10">
+        {/* Header Section */}
+        <section className="py-16 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                My Projects
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8">
+                A showcase of innovative solutions, from AI-powered applications to full-stack platforms. 
+                Each project represents a unique challenge solved with cutting-edge technology and best practices.
+              </p>
+              <div className="flex flex-wrap justify-center gap-2">
+                <Badge variant="secondary" className="text-sm">
+                  {projects.length} Projects Completed
+                </Badge>
+                <Badge variant="secondary" className="text-sm">
+                  Multiple Industries
+                </Badge>
               <Badge variant="secondary" className="text-sm">
                 AI/ML Specialist
               </Badge>
@@ -129,9 +256,15 @@ export default function ProjectsPage() {
         <div className="container mx-auto px-4">
           <Tabs defaultValue="All" className="w-full">
             <div className="flex justify-center mb-12">
-              <TabsList className="grid w-full max-w-md grid-cols-5">
+              <TabsList className="h-auto rounded-full bg-muted p-1 gap-1">
                 {categories.map((category) => (
-                  <TabsTrigger key={category} value={category} className="text-sm">
+                  <TabsTrigger
+                    key={category}
+                    value={category}
+                    className="rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-all
+                               hover:text-primary
+                               data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+                  >
                     {category}
                   </TabsTrigger>
                 ))}
@@ -253,6 +386,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   )
 }

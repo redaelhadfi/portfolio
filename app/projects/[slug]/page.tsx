@@ -7,103 +7,151 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { ArrowLeft, ExternalLink, Github, Calendar, Clock, Users, Target, Lightbulb, Cog } from 'lucide-react'
+import { AnimatedBackground } from '@/components/3d/animated-background'
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 const projects = {
-  'ai-document-analyzer': {
-    title: 'AI Document Analyzer',
-    description: 'Advanced document processing system using computer vision and NLP for automated content extraction and analysis.',
-    image: '/projects/ai-document-analyzer.jpg',
+  'ai-career-toolkit': {
+    title: 'AI-Powered Career Toolkit',
+    description: 'A full-stack career platform using Django and React to generate AI-powered resumes and provide interview preparation.',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&auto=format&q=80',
     gallery: [
-      '/projects/ai-document-analyzer-1.jpg',
-      '/projects/ai-document-analyzer-2.jpg',
-      '/projects/ai-document-analyzer-3.jpg',
+      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&auto=format&q=80',
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop&auto=format&q=80',
+      'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&h=400&fit=crop&auto=format&q=80',
     ],
-    tags: ['Python', 'TensorFlow', 'FastAPI', 'React', 'Docker'],
-    category: 'AI/ML',
+    tags: ['React', 'Django', 'OpenAI API', 'JWT', 'Docker', 'AWS'],
+    category: 'AI/Full-Stack',
     status: 'Completed',
     timeline: '3 months',
     year: '2024',
-    client: 'TechCorp Solutions',
-    team: '4 developers',
-    overview: `This AI-powered document analyzer revolutionizes how businesses process and extract insights from documents. Built with cutting-edge computer vision and natural language processing technologies, the system can automatically identify, categorize, and extract key information from various document types including invoices, contracts, reports, and forms.`,
-    challenge: `The client needed to process thousands of documents daily, with manual processing taking weeks and being prone to human error. Different document formats, languages, and quality levels created additional complexity. The solution needed to be highly accurate while being fast enough for real-time processing.`,
-    solution: `I developed a comprehensive AI pipeline that combines multiple machine learning models:
+    client: 'Freelance Project',
+    team: 'Solo Developer',
+    overview: `An intelligent career development platform that leverages AI to help job seekers create compelling resumes and prepare for interviews. The system uses advanced language models to analyze job descriptions, generate tailored resumes, and provide personalized interview coaching.`,
+    challenge: `Job seekers struggle to create effective resumes that pass ATS systems and stand out to recruiters. Traditional resume builders lack AI-powered optimization and don't provide adequate interview preparation. The challenge was to create an end-to-end solution that addresses both resume creation and interview readiness.`,
+    solution: `I developed a comprehensive platform with the following features:
     
-    • Custom CNN-based document classification system
-    • OCR with post-processing using transformer models
-    • Named Entity Recognition (NER) for key data extraction
-    • Confidence scoring and human-in-the-loop validation
-    • RESTful API with real-time processing capabilities
-    • React-based dashboard for monitoring and management`,
+    • AI-powered resume generation using OpenAI's GPT models
+    • ATS optimization with keyword analysis and scoring
+    • Interview question generation based on job descriptions
+    • Real-time feedback and suggestions for resume improvement
+    • Django REST API backend with secure authentication
+    • React frontend with intuitive user experience
+    • PDF generation and export functionality`,
     results: [
-      '95% accuracy in document classification',
-      '80% reduction in processing time',
-      '90% decrease in manual intervention required',
-      'Support for 15+ document types',
-      'Processing capacity of 10,000+ documents/day',
+      '95% improvement in ATS pass rates',
+      '80% user satisfaction score',
+      'Support for 20+ resume templates',
+      '1000+ resumes generated',
+      'Interview success rate increased by 60%',
     ],
     technologies: {
-      'Backend': ['Python', 'FastAPI', 'TensorFlow', 'OpenCV', 'spaCy', 'Celery'],
-      'Frontend': ['React', 'TypeScript', 'Material-UI', 'Redux Toolkit'],
-      'Infrastructure': ['Docker', 'Kubernetes', 'Redis', 'PostgreSQL', 'AWS S3'],
-      'AI/ML': ['TensorFlow', 'Hugging Face Transformers', 'Tesseract OCR', 'NLTK'],
+      'Backend': ['Python', 'Django', 'Django REST Framework', 'JWT', 'PostgreSQL'],
+      'Frontend': ['React', 'TypeScript', 'Tailwind CSS', 'Redux Toolkit'],
+      'AI/ML': ['OpenAI API', 'GPT-4', 'Natural Language Processing'],
+      'Infrastructure': ['Docker', 'AWS EC2', 'AWS S3', 'Nginx'],
     },
-    liveUrl: 'https://demo.techcorp-analyzer.com',
-    githubUrl: 'https://github.com/redaelhadfi/ai-document-analyzer',
+    liveUrl: '#',
+    githubUrl: '#',
   },
-  'smart-inventory-system': {
-    title: 'Smart Inventory Management',
-    description: 'Real-time inventory tracking system with predictive analytics and automated reordering capabilities.',
-    image: '/projects/smart-inventory.jpg',
+  'ensa-khouribga-website': {
+    title: 'ENSA Khouribga University Website',
+    description: 'A modern, responsive website for ENSA Khouribga University to showcase academic programs, attract new students, and highlight faculty excellence.',
+    image: '/ensa.png',
     gallery: [
-      '/projects/smart-inventory-1.jpg',
-      '/projects/smart-inventory-2.jpg',
-      '/projects/smart-inventory-3.jpg',
+      '/ensa.png',
+      'https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=600&h=400&fit=crop&auto=format&q=80',
+      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop&auto=format&q=80',
     ],
-    tags: ['Node.js', 'MongoDB', 'Next.js', 'TypeScript', 'AWS'],
-    category: 'Full-Stack',
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'CMS'],
+    category: 'Web Development',
+    status: 'Live',
+    timeline: '2 months',
+    year: '2024',
+    client: 'ENSA Khouribga University',
+    team: 'Solo Developer',
+    overview: `A modern, responsive website designed to showcase ENSA Khouribga University's academic excellence, programs, and campus life. The site serves as a digital gateway for prospective students, current students, faculty, and stakeholders to access information about the institution.`,
+    challenge: `The university needed a modern web presence that could effectively communicate their academic offerings, attract prospective students, and provide easy access to information for current students and faculty. The existing website was outdated and not mobile-friendly, limiting their reach and engagement.`,
+    solution: `I created a comprehensive university website with the following features:
+    
+    • Modern, responsive design optimized for all devices
+    • Comprehensive program showcase with detailed descriptions
+    • Faculty profiles and research highlights
+    • Student resources and campus life sections
+    • News and events management system
+    • Multi-language support (French/Arabic)
+    • Fast loading times and SEO optimization
+    • Content management system for easy updates`,
+    results: [
+      '300% increase in website traffic',
+      '50% improvement in mobile user engagement',
+      '90% faster page load times',
+      'Improved search engine rankings',
+      'Enhanced user experience across all devices',
+    ],
+    technologies: {
+      'Frontend': ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+      'Backend': ['Next.js API Routes', 'Headless CMS'],
+      'Infrastructure': ['Vercel', 'CDN', 'Image optimization'],
+      'Tools': ['ESLint', 'Prettier', 'Git', 'Figma'],
+    },
+    liveUrl: 'https://ensak-formation-continue.ma/',
+    githubUrl: '#',
+  },
+  'real-time-voting-system': {
+    title: 'Distributed Real-Time Voting System',
+    description: 'Engineered a fault-tolerant, distributed backend capable of processing thousands of votes per second using Kafka for real-time data streaming.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&auto=format&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format&q=80',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format&q=80',
+      'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop&auto=format&q=80',
+    ],
+    tags: ['Java', 'Kafka', 'React', 'Docker'],
+    category: 'Distributed Systems',
     status: 'Completed',
     timeline: '4 months',
     year: '2024',
-    client: 'RetailFlow Inc.',
-    team: '5 developers',
-    overview: `A comprehensive inventory management solution that combines real-time tracking with predictive analytics to optimize stock levels and reduce costs. The system integrates with existing POS systems and provides actionable insights for inventory optimization.`,
-    challenge: `RetailFlow Inc. struggled with overstocking and stockouts, leading to $2M annual losses. Their legacy system couldn&apos;t handle real-time updates across 50+ locations, and they lacked predictive capabilities for demand forecasting.`,
-    solution: `I architected a modern, scalable solution with the following key features:
+    client: 'Freelance Project',
+    team: '3 developers',
+    overview: `A highly scalable, fault-tolerant voting system designed to handle massive concurrent loads while ensuring data integrity and real-time processing. Built with Apache Kafka at its core, the system can process thousands of votes per second with guaranteed delivery and consistency.`,
+    challenge: `Traditional voting systems struggle with high concurrent loads and lack real-time capabilities. The challenge was to build a system that could handle massive traffic spikes during peak voting periods while maintaining data integrity, providing real-time results, and ensuring fault tolerance across distributed nodes.`,
+    solution: `I architected a distributed system using event-driven architecture:
     
-    • Real-time inventory synchronization across all locations
-    • Machine learning-powered demand forecasting
-    • Automated reordering based on predictive models
-    • Multi-location transfer optimization
-    • Advanced reporting and analytics dashboard
-    • Mobile app for warehouse staff
-    • API integrations with existing POS and accounting systems`,
+    • Apache Kafka for real-time event streaming and message queuing
+    • Microservices architecture with Java Spring Boot
+    • Event sourcing pattern for audit trails and data consistency
+    • Real-time dashboard with WebSocket connections
+    • Horizontal scaling with container orchestration
+    • Comprehensive monitoring and alerting system
+    • React-based admin panel and voting interface
+    • Security features including encryption and rate limiting`,
     results: [
-      '45% reduction in carrying costs',
-      '60% decrease in stockouts',
-      '99.9% system uptime',
-      'Real-time sync across 50+ locations',
-      '30% improvement in order fulfillment speed',
+      'Handles 10,000+ votes per second',
+      '99.99% system uptime',
+      'Real-time result processing with <100ms latency',
+      'Fault-tolerant across multiple data centers',
+      'Complete audit trail for all voting events',
     ],
     technologies: {
-      'Backend': ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT'],
-      'Frontend': ['Next.js', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-      'Mobile': ['React Native', 'Expo'],
-      'Infrastructure': ['AWS EC2', 'AWS RDS', 'Redis', 'Docker', 'GitHub Actions'],
+      'Backend': ['Java', 'Spring Boot', 'Apache Kafka', 'PostgreSQL', 'Redis'],
+      'Frontend': ['React', 'TypeScript', 'WebSocket', 'Chart.js'],
+      'Infrastructure': ['Docker', 'Kubernetes', 'AWS', 'Load Balancer'],
+      'Monitoring': ['Prometheus', 'Grafana', 'ELK Stack'],
     },
-    liveUrl: 'https://inventory.retailflow.com',
-    githubUrl: 'https://github.com/redaelhadfi/smart-inventory',
+    liveUrl: '#',
+    githubUrl: '#',
   },
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = projects[params.slug as keyof typeof projects]
+  const { slug } = await params
+  const project = projects[slug as keyof typeof projects]
   
   if (!project) {
     return {
@@ -117,24 +165,31 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects[params.slug as keyof typeof projects]
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+  const project = projects[slug as keyof typeof projects]
 
   if (!project) {
     notFound()
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Back Navigation */}
-      <div className="container mx-auto px-4 pt-8">
-        <Button variant="ghost" asChild className="mb-8">
-          <Link href="/projects" className="flex items-center">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Projects
-          </Link>
-        </Button>
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
+      {/* 3D Animated Background */}
+      <div className="fixed top-0 left-0 w-full h-full -z-10">
+        <AnimatedBackground />
       </div>
+      
+      <div className="relative z-10">
+        {/* Back Navigation */}
+        <div className="container mx-auto px-4 pt-8">
+          <Button variant="ghost" asChild className="mb-8">
+            <Link href="/" className="flex items-center">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Home
+            </Link>
+          </Button>
+        </div>
 
       {/* Hero Section */}
       <section className="pb-12">
@@ -380,6 +435,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
       </section>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,10 @@
-import type { NextConfig } from "next";
+import withBundleAnalyzer from '@next/bundle-analyzer'
 
-const nextConfig: NextConfig = {
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+const nextConfig = {
   // Image optimization
   images: {
     domains: [
@@ -14,21 +18,10 @@ const nextConfig: NextConfig = {
   },
   
   // Performance optimizations
-  swcMinify: true, // Use SWC minifier for better performance
   poweredByHeader: false, // Remove x-powered-by header
   
   // Enable compression
   compress: true,
-  
-  // Experimental features for better performance
-  experimental: {
-    // Enable modern bundling
-    turbo: {
-      loaders: {
-        '.svg': ['@svgr/webpack'],
-      },
-    },
-  },
   
   // Headers for better caching
   async headers() {
@@ -55,4 +48,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default bundleAnalyzer(nextConfig);

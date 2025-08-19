@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { AnimatedBackground } from '@/components/3d/animated-background'
 import { 
   Calendar, 
   MapPin, 
@@ -23,127 +24,97 @@ export const metadata: Metadata = {
 
 const workExperience = [
   {
-    title: 'AI Research Intern',
-    company: 'Morocco AI Research Lab',
-    location: 'Rabat, Morocco',
-    period: 'Jun 2024 - Present',
-    type: 'Internship',
-    description: 'Leading research on neural network optimization and developing novel architectures for computer vision applications.',
-    achievements: [
-      'Developed a new CNN architecture that improved image classification accuracy by 12%',
-      'Published research paper on neural network pruning techniques',
-      'Collaborated with international research team on federated learning project',
-      'Mentored 3 junior researchers on ML best practices',
-    ],
-    technologies: ['Python', 'PyTorch', 'TensorFlow', 'CUDA', 'MLflow'],
-  },
-  {
-    title: 'Full-Stack Developer',
-    company: 'TechStart Solutions',
-    location: 'Casablanca, Morocco',
-    period: 'Jan 2024 - May 2024',
-    type: 'Contract',
-    description: 'Built scalable web applications for startups, focusing on modern tech stacks and best development practices.',
-    achievements: [
-      'Architected and developed 3 web applications from concept to deployment',
-      'Reduced application load times by 40% through optimization techniques',
-      'Implemented CI/CD pipelines reducing deployment time by 60%',
-      'Led code reviews and established development standards for the team',
-    ],
-    technologies: ['React', 'Node.js', 'Next.js', 'TypeScript', 'AWS', 'Docker'],
-  },
-  {
-    title: 'Machine Learning Engineer Intern',
-    company: 'DataTech Morocco',
-    location: 'Rabat, Morocco',
-    period: 'Jul 2023 - Sep 2023',
-    type: 'Internship',
-    description: 'Developed ML models for predictive analytics and worked on data pipeline optimization.',
-    achievements: [
-      'Built predictive models achieving 94% accuracy for customer churn prediction',
-      'Optimized data processing pipeline reducing computation time by 35%',
-      'Created automated model monitoring and retraining system',
-      'Presented findings to C-level executives and stakeholders',
-    ],
-    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Apache Spark', 'PostgreSQL'],
-  },
-  {
-    title: 'Web Development Freelancer',
-    company: 'Self-Employed',
+    title: 'Software Engineer',
+    company: 'Freelancer.com',
     location: 'Remote',
-    period: 'Jan 2022 - Dec 2023',
+    period: 'Nov 2023 - Present',
     type: 'Freelance',
-    description: 'Provided web development services to small businesses and startups across various industries.',
+    description: 'Delivering high-quality backend systems and REST APIs for diverse clients worldwide with focus on Python and Django development.',
     achievements: [
-      'Delivered 15+ web projects for clients in e-commerce, education, and healthcare',
-      'Maintained 98% client satisfaction rate with 12+ five-star reviews',
-      'Generated $25K+ in revenue while maintaining full-time studies',
-      'Built long-term partnerships with 5 recurring clients',
+      'Architected backend systems and REST APIs for 45+ projects using Python, Django, and Flask with PostgreSQL',
+      'Deployed scalable applications on AWS using Docker and CI/CD pipelines to enhance reliability',
+      'Achieved 5.0-star rating across 48 reviews with 100% on-time delivery and on-budget completion',
+      'Built long-term partnerships with recurring clients across various industries',
     ],
-    technologies: ['React', 'Vue.js', 'PHP', 'WordPress', 'MySQL', 'Stripe API'],
+    technologies: ['Python', 'Django', 'Flask', 'PostgreSQL', 'AWS', 'Docker', 'REST APIs'],
+  },
+  {
+    title: 'Data Scientist',
+    company: 'Experio',
+    location: 'Casablanca, Morocco',
+    period: 'Jun 2023 - Jan 2024',
+    type: 'Internship',
+    description: 'Automated table detection and information extraction project using deep learning and computer vision techniques.',
+    achievements: [
+      'Implemented robust solution using CNNs for precise table identification in images',
+      'Integrated OCR (Tesseract) to extract structured data from recognized tables',
+      'Achieved 98% detection accuracy, reducing manual data entry workload by over 95%',
+      'Streamlined workflows for efficient handling of diverse tabular information',
+    ],
+    technologies: ['Python', 'TensorFlow', 'OpenCV', 'OCR', 'Tesseract', 'Data Science'],
   },
 ]
 
 const education = [
   {
-    degree: 'Engineering Degree in Computer Science',
+    degree: 'Engineering Degree in Data and Software Engineering',
     school: 'National Institute of Posts and Telecommunications (INPT)',
     location: 'Rabat, Morocco',
     period: '2022 - 2025',
-    status: 'Final Year',
-    description: 'Specialized in Artificial Intelligence and Software Engineering with focus on machine learning, data science, and system architecture.',
+    status: 'Current',
+    description: 'Specializing in Data and Software Engineering with focus on backend development, AI applications, and cloud computing.',
     achievements: [
-      'Graduated in top 5% of class with GPA 3.8/4.0',
-      'Research project on "Federated Learning for Privacy-Preserving AI"',
-      'President of AI & Robotics Club (2023-2024)',
-      'Winner of National Hackathon on Smart Cities (2023)',
+      'Vice President of Student Council (2024)',
+      'Member of CIT INPT - Computer & Information Technology Club',
+      'Seeking Research Assistant internship (PFE) opportunities',
+      'Focus on cutting-edge technology and enterprise software innovation',
     ],
-    coursework: ['Machine Learning', 'Deep Learning', 'System Design', 'Algorithms', 'Database Systems', 'Software Engineering'],
+    coursework: ['Data Engineering', 'Software Engineering', 'Data Structures', 'Algorithms', 'Database Systems', 'AI & Machine Learning'],
   },
   {
-    degree: 'Preparatory Classes in Mathematics and Physics',
-    school: 'Lycée Mohammed V',
-    location: 'Casablanca, Morocco',
+    degree: 'Diploma in Scientific and Technical University Studies (DEUST)',
+    school: 'Faculty of Sciences and Technologies',
+    location: 'Fez, Morocco',
     period: '2020 - 2022',
     status: 'Completed',
-    description: 'Intensive two-year program preparing for competitive entrance exams to engineering schools.',
+    description: 'University Diploma in Scientific and Technical Studies - preparatory program for engineering schools.',
     achievements: [
-      'Top 10% in national competitive exam (CNC)',
-      'Mathematics Olympiad regional finalist',
-      'Tutored fellow students in advanced mathematics',
+      'Successfully qualified for INPT engineering program',
+      'Strong foundation in mathematics and computer science fundamentals',
+      'Developed analytical and problem-solving skills',
     ],
-    coursework: ['Advanced Mathematics', 'Physics', 'Chemistry', 'Computer Science Fundamentals'],
+    coursework: ['Advanced Mathematics', 'Physics', 'Computer Science Fundamentals', 'Programming Basics'],
   },
 ]
 
 const certifications = [
   {
-    title: 'AWS Certified Solutions Architect - Associate',
-    issuer: 'Amazon Web Services',
-    date: 'March 2024',
-    credentialId: 'AWS-ASA-2024-REHD',
-    description: 'Demonstrated expertise in designing distributed systems on AWS platform.',
+    title: 'Supervised Machine Learning: Regression and Classification',
+    issuer: 'DeepLearning.AI',
+    date: '2023',
+    credentialId: 'DL-ML-2023-REH',
+    description: 'Comprehensive course on machine learning fundamentals and supervised learning techniques.',
   },
   {
-    title: 'TensorFlow Developer Certificate',
-    issuer: 'Google',
-    date: 'January 2024',
-    credentialId: 'TF-DEV-2024-REH',
-    description: 'Certified in building and training neural network models using TensorFlow.',
+    title: 'Python Level 1',
+    issuer: 'Freelancer.com',
+    date: '2023',
+    credentialId: 'FL-PY-L1-2023',
+    description: 'Certified proficiency in Python programming language.',
   },
   {
-    title: 'Professional Scrum Master I (PSM I)',
-    issuer: 'Scrum.org',
-    date: 'November 2023',
-    credentialId: 'PSM-I-2023-REH',
-    description: 'Certified in Scrum framework and agile project management practices.',
+    title: 'US English Level 1',
+    issuer: 'Freelancer.com',
+    date: '2023',
+    credentialId: 'FL-EN-L1-2023',
+    description: 'Certified proficiency in US English communication.',
   },
   {
-    title: 'Meta Front-End Developer Certificate',
-    issuer: 'Meta (Coursera)',
-    date: 'August 2023',
-    credentialId: 'META-FE-2023-REH',
-    description: 'Comprehensive program covering modern front-end development with React.',
+    title: 'Preferred Freelancer Program SLA',
+    issuer: 'Freelancer.com',
+    date: '2024',
+    credentialId: 'FL-PFP-2024',
+    description: 'Recognition for consistent high-quality work and client satisfaction.',
   },
 ]
 
@@ -170,13 +141,19 @@ const skills = {
 
 export default function ExperiencePage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header Section */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Professional Experience
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
+      {/* 3D Animated Background */}
+      <div className="fixed top-0 left-0 w-full h-full -z-10">
+        <AnimatedBackground />
+      </div>
+      
+      <div className="relative z-10">
+        {/* Header Section */}
+        <section className="py-16 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                Professional Experience
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               A comprehensive overview of my journey in AI, software engineering, and continuous learning. 
@@ -479,6 +456,7 @@ export default function ExperiencePage() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   )
 }

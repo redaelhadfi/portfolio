@@ -5,10 +5,10 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Floating geometric shapes component
+// Floating geometric shapes component - Optimized
 function FloatingShapes() {
   const meshRef = useRef<THREE.Group>(null);
-  const count = 50;
+  const count = 30; // Reduced from 50 for better performance
   
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -18,12 +18,12 @@ function FloatingShapes() {
       pos[i * 3 + 2] = (Math.random() - 0.5) * 20;
     }
     return pos;
-  }, []);
+  }, [count]);
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.1;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.05; // Slower rotation for smoother performance
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.025;
     }
   });
 
@@ -37,6 +37,7 @@ function FloatingShapes() {
           sizeAttenuation={true}
           depthWrite={false}
           opacity={0.6}
+          blending={THREE.AdditiveBlending} // Better blending for performance
         />
       </Points>
     </group>
@@ -173,11 +174,12 @@ export function AnimatedBackground() {
           far: 1000
         }}
         gl={{
-          antialias: true,
+          antialias: false, // Disable for better performance
           alpha: true,
           powerPreference: "high-performance"
         }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]} // Limit pixel ratio for performance
+        performance={{ min: 0.5 }} // Enable automatic performance scaling
         style={{
           background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #581c87 100%)'
         }}
