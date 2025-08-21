@@ -74,15 +74,18 @@ export function TrustStrip() {
                 >
                     {/* Section Header */}
                     <div className="space-y-4">
-                        <motion.p
-                            className="font-mono text-sm uppercase tracking-widest text-accent"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
+                        <motion.h2
+                            className="text-4xl lg:text-5xl font-bold tracking-tight"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            Why Hire Me?
-                        </motion.p>
+                            Why Hire{" "}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 animate-gradient">
+                                Me?
+                            </span>
+                        </motion.h2>
                         <motion.h2
                             className="text-4xl font-bold tracking-tight text-foreground"
                             initial={{ opacity: 0, y: 20 }}

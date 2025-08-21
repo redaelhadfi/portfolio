@@ -260,6 +260,20 @@ const getProjectIcon = (category: string) => {
   }
 }
 
+// Small icon variant for category tabs
+const getCategoryIcon = (category: string) => {
+  switch (category) {
+    case 'AI/ML':
+      return <Brain className="w-4 h-4" />
+    case 'Full-Stack':
+      return <Code className="w-4 h-4" />
+    case 'Distributed Systems':
+      return <Database className="w-4 h-4" />
+    default:
+      return <Cpu className="w-4 h-4" />
+  }
+}
+
 export default function ProjectsPage() {
   // Helper function to get details for each link type
   const getLinkDetails = (type: string) => {
@@ -276,6 +290,14 @@ export default function ProjectsPage() {
         return { text: 'View Link', icon: <ExternalLink className="w-4 h-4" /> }
     }
   }
+
+  // Counts per category for tab badges
+  const categoryCounts: Record<string, number> = Object.fromEntries(
+    categories.map((c) => [
+      c,
+      c === 'All' ? projects.length : projects.filter((p) => p.category === c).length,
+    ])
+  )
 
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
@@ -315,16 +337,25 @@ export default function ProjectsPage() {
           <div className="container mx-auto px-4">
             <Tabs defaultValue="All" className="w-full">
               <div className="flex justify-center mb-12">
-                <TabsList className="h-auto rounded-full bg-muted p-1 gap-1">
+                <TabsList className="h-auto rounded-full bg-background/50 supports-[backdrop-filter]:bg-background/60 backdrop-blur border border-primary/10 shadow-sm p-1 gap-1">
                   {categories.map((category) => (
                     <TabsTrigger
                       key={category}
                       value={category}
-                      className="rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-all
-                               hover:text-primary
-                               data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+                      className="group relative rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-all
+                               hover:text-foreground hover:bg-background/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30
+                               data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:ring-1 data-[state=active]:ring-primary/20"
                     >
-                      {category}
+                      <span className="flex items-center gap-2">
+                        <span className="opacity-80">{getCategoryIcon(category)}</span>
+                        <span>{category}</span>
+                        <span
+                          className="ml-1 inline-flex items-center justify-center text-[10px] font-semibold px-2 py-0.5 rounded-full
+                                     bg-primary/10 text-primary group-data-[state=active]:bg-primary group-data-[state=active]:text-primary-foreground"
+                        >
+                          {categoryCounts[category]}
+                        </span>
+                      </span>
                     </TabsTrigger>
                   ))}
                 </TabsList>
