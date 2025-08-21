@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, Quote, Verified, Clock, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 // Testimonials data now uses the real reviews you provided.
 const testimonials = [
@@ -61,8 +62,20 @@ const stats = [
 ];
 
 export function Testimonials() {
+    const sectionRef = useRef<HTMLElement>(null);
+
+    // Ensure hash navigation works after lazy load
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.location.hash === '#testimonials' && sectionRef.current) {
+            // slight timeout to ensure layout settled
+            setTimeout(() => {
+                sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        }
+    }, []);
+
     return (
-        <section className="py-20 lg:py-32 relative overflow-hidden">
+        <section id="testimonials" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden scroll-mt-24">
             <div className="container mx-auto max-w-7xl px-4">
                 {/* Section Header */}
                 <motion.div

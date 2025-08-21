@@ -151,7 +151,14 @@ function Scene() {
 }
 
 // Main component with responsive canvas
-export function AnimatedBackground() {
+type AnimatedBackgroundVariant = 'default' | 'resume';
+
+interface AnimatedBackgroundProps {
+  variant?: AnimatedBackgroundVariant;
+  className?: string;
+}
+
+export function AnimatedBackground({ variant = 'default', className = '' }: AnimatedBackgroundProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -164,8 +171,13 @@ export function AnimatedBackground() {
     );
   }
 
+  // Choose gradient based on variant
+  const gradient = variant === 'resume'
+    ? 'linear-gradient(135deg, #020617 0%, #0f172a 35%, #1e1b4b 70%, #581c87 100%)'
+    : 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #581c87 100%)';
+
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className={`fixed inset-0 -z-10 print:hidden ${className}`}>
       <Canvas
         camera={{
           position: [0, 0, 15],
@@ -180,15 +192,13 @@ export function AnimatedBackground() {
         }}
         dpr={[1, 1.5]} // Limit pixel ratio for performance
         performance={{ min: 0.5 }} // Enable automatic performance scaling
-        style={{
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #581c87 100%)'
-        }}
+        style={{ background: gradient }}
       >
         <Scene />
       </Canvas>
       
       {/* Overlay gradient for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/30 pointer-events-none" />
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background/60 dark:via-black/30 dark:to-black/50 pointer-events-none mix-blend-normal" />
     </div>
   );
 }

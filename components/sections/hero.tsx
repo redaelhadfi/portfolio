@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Tech stack updated to reflect your core skills listed in the resume
@@ -47,7 +47,7 @@ export function HeroSection() {
                         >
                             <div className="flex items-center gap-2">
                                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                                <span>Seeking Research Assistant Internship (PFE)</span>
+                                <span>Available for Full-Stack & AI Projects</span>
                             </div>
                         </Badge>
 
@@ -69,8 +69,7 @@ export function HeroSection() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                             >
-                                I am a Data and Software Engineering student seeking a Research Assistant internship (PFE) to contribute to cutting-edge technology and enterprise software innovation. From deploying cloud-native platforms on AWS to engineering deep learning models, I turn complex challenges into high-impact software solutions.
-                            </motion.p>
+Final-year engineering student merging full-stack development with AI and cloud tech. I specialize in turning complex challenges into high-impact, intelligent applications. </motion.p>
                         </div>
 
                         <motion.div
@@ -85,8 +84,8 @@ export function HeroSection() {
                                 </a>
                             </Button>
                             <Button size="lg" variant="outline" asChild>
-                                <a href="/REDA_ELHADFI_Resume.pdf" target="_blank" rel="noopener noreferrer">
-                                    Download Resume <Download className="ml-2 h-5 w-5" />
+                                <a href="/resume">
+                                    View Resume <ArrowRight className="ml-2 h-5 w-5" />
                                 </a>
                             </Button>
                         </motion.div>

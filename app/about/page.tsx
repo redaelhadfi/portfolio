@@ -13,7 +13,7 @@ import {
   Coffee,
   Globe,
   BookOpen,
-  Download,
+  ExternalLink,
   Calendar,
   MapPin
 } from 'lucide-react'
@@ -64,21 +64,25 @@ const values = [
     title: 'Innovation First',
     description: 'I believe in pushing the boundaries of what&apos;s possible with technology, always seeking creative solutions to complex problems.',
     icon: Brain,
+    gradient: 'from-blue-500/20 to-purple-500/20',
   },
   {
     title: 'Quality & Craftsmanship',
     description: 'Every line of code I write is crafted with care, following best practices and maintaining high standards.',
     icon: Award,
+    gradient: 'from-green-500/20 to-emerald-500/20',
   },
   {
     title: 'Continuous Learning',
     description: 'Technology evolves rapidly, and I&apos;m committed to staying at the forefront through continuous learning and experimentation.',
     icon: BookOpen,
+    gradient: 'from-orange-500/20 to-red-500/20',
   },
   {
     title: 'Collaboration',
     description: 'Great software is built by great teams. I value open communication, knowledge sharing, and collective problem-solving.',
     icon: Users,
+    gradient: 'from-pink-500/20 to-violet-500/20',
   },
 ]
 
@@ -110,10 +114,10 @@ export default function AboutPage() {
                   Crafting the Future with AI & Code
                 </h1>
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  I&apos;m a Data and Software Engineering student at INPT, seeking a Research Assistant internship (PFE) 
-                  to contribute to cutting-edge technology and enterprise software innovation. With 45+ successful freelance projects 
-                  and a 5.0-star rating on Freelancer.com, I specialize in architecting backend systems and intelligent applications 
-                  that solve real-world problems.
+                  I&apos;m a Data and Software Engineering student at INPT with a passion for building innovative 
+                  solutions that bridge the gap between cutting-edge AI and real-world applications. With 45+ successful 
+                  freelance projects and a 5.0-star rating on Freelancer.com, I specialize in architecting backend 
+                  systems and intelligent applications that solve complex problems.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg">
@@ -123,8 +127,8 @@ export default function AboutPage() {
                   </Button>
                   <Button variant="outline" size="lg" asChild>
                     <Link href="/resume">
-                      <Download className="w-4 h-4 mr-2" />
-                      Download Resume
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      View Resume
                     </Link>
                   </Button>
                 </div>
@@ -171,25 +175,28 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-center mb-12">My Journey</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="text-lg leading-relaxed mb-6">
-                My journey into the world of AI and software development began during my early years at INPT, 
-                where I discovered the fascinating intersection of mathematics, computer science, and real-world 
-                problem solving. What started as curiosity about machine learning algorithms quickly evolved 
-                into a deep passion for creating intelligent systems.
+                My programming journey began when I was 14 years old, driven by pure curiosity and a desire to 
+                understand how technology works from the ground up. I started by learning Python from scratch, 
+                creating simple algorithms, and diving into the fascinating worlds of cybersecurity and networking. 
+                Those early days of trial and error taught me the fundamentals that would shape my entire career.
               </p>
               <p className="text-lg leading-relaxed mb-6">
-                Throughout my academic journey, I&apos;ve had the privilege of working on diverse projects ranging 
-                from computer vision applications to full-stack web platforms. Each project has taught me 
-                something new about the art of building software that not only works but makes a meaningful 
-                impact on people&apos;s lives.
+                As I progressed through my studies at INPT, I discovered the incredible potential of combining 
+                my programming skills with artificial intelligence and machine learning. What started as simple 
+                scripts evolved into sophisticated systems capable of solving real-world problems. Each project 
+                became a stepping stone to understanding more complex concepts and technologies.
               </p>
               <p className="text-lg leading-relaxed mb-6">
-                Beyond the technical aspects, I&apos;m deeply committed to the ethical development of AI systems. 
-                I believe that as developers and engineers, we have a responsibility to create technology that 
-                is inclusive, transparent, and beneficial to society as a whole.
+                Throughout my academic and freelance journey, I&apos;ve had the privilege of working on diverse 
+                projects ranging from computer vision applications to full-stack web platforms. Each challenge 
+                has taught me something new about the art of building software that not only works but makes 
+                a meaningful impact on people&apos;s lives.
               </p>
               <p className="text-lg leading-relaxed">
-                When I&apos;m not coding or researching the latest in AI, you&apos;ll find me contributing to open-source 
-                projects, mentoring fellow students, or exploring the beautiful landscapes of Morocco with my camera.
+                Today, I continue to push the boundaries of what&apos;s possible with code, always staying curious 
+                about emerging technologies. When I&apos;m not coding or exploring the latest in AI, you&apos;ll find me 
+                contributing to open-source projects, sharing knowledge with fellow developers, or capturing 
+                the beautiful landscapes of Morocco through my lens.
               </p>
             </div>
           </div>
@@ -229,20 +236,34 @@ export default function AboutPage() {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">What Drives Me</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {values.map((value) => (
-                <div key={value.title} className="flex">
-                  <div className="flex-shrink-0 mr-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <value.icon className="w-6 h-6 text-primary" />
+              {values.map((value, index) => (
+                <Card key={value.title} className="relative overflow-hidden group hover:shadow-xl transition-all duration-300 border-0">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                  <CardContent className="relative p-8">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-6">
+                        <div className={`w-14 h-14 bg-gradient-to-br ${value.gradient} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <value.icon className="w-7 h-7 text-primary" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center mb-3">
+                          <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                            {value.title}
+                          </h3>
+                          <div className="ml-auto">
+                            <Badge variant="outline" className="text-xs opacity-60">
+                              0{index + 1}
+                            </Badge>
+                          </div>
+                        </div>
+                        <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                          {value.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -316,27 +337,33 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Let&apos;s Build Something Amazing
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I&apos;m always excited to collaborate on innovative projects and explore new challenges. 
-            Whether you&apos;re looking to build an AI solution or need a reliable full-stack developer, 
-            let&apos;s connect.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg">
-              <Link href="/contact">
-                Start a Conversation
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/experience">
-                View Experience
-              </Link>
-            </Button>
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+        <div className="container mx-auto px-4 text-center relative">
+          <div className="max-w-3xl mx-auto">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-2xl mb-8 shadow-lg">
+              <Code className="w-10 h-10 text-primary" />
+            </div>
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Let&apos;s Build Something Amazing
+            </h2>
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+              I&apos;m always excited to collaborate on innovative projects and explore new challenges. 
+              Whether you&apos;re looking to build an AI solution or need a reliable full-stack developer, 
+              let&apos;s connect and create something extraordinary together.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
+                <Link href="/contact">
+                  Start a Conversation
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild className="shadow-lg hover:shadow-xl transition-shadow bg-background/80 backdrop-blur">
+                <Link href="/experience">
+                  View Experience
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

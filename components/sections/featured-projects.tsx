@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Bot, Vote, School } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ProjectCard, ProjectData } from "@/components/ui/project-card";
 
 // Projects updated to reflect your latest work.
@@ -12,14 +13,12 @@ const projects: ProjectData[] = [
         title: "AI-Powered Career Toolkit",
         description:
             "A full-stack career platform using Django and React to generate AI-powered resumes and provide interview preparation.",
-        status: "Freelance Project",
+        status: "In Development",
         tags: ["React", "Django", "OpenAI API", "JWT", "Docker", "AWS"],
         icon: Bot,
         color: "text-purple-400",
         bgColor: "bg-purple-400/10",
         borderColor: "border-purple-400/20",
-        liveHref: "#",
-        githubHref: "#",
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&auto=format&q=80",
     },
     {
@@ -34,7 +33,7 @@ const projects: ProjectData[] = [
         bgColor: "bg-blue-400/10",
         borderColor: "border-blue-400/20",
         liveHref: "https://ensak-formation-continue.ma/",
-        githubHref: "#",
+        githubHref: "#", 
         image: "/ensa.png",
     },
     {
@@ -42,14 +41,12 @@ const projects: ProjectData[] = [
         title: "Distributed Real-Time Voting System",
         description:
             "Engineered a fault-tolerant, distributed backend capable of processing thousands of votes per second using Kafka for real-time data streaming.",
-        status: "Freelance Project",
+        status: "Conceptual Project",
         tags: ["Java", "Kafka", "React", "Docker"],
         icon: Vote,
         color: "text-green-400",
         bgColor: "bg-green-400/10",
         borderColor: "border-green-400/20",
-        liveHref: "#",
-        githubHref: "#",
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format&q=80",
     },
 ];
@@ -100,6 +97,7 @@ export function FeaturedProjects() {
                     ))}
                 </div>
 
+                {/* Updated Button */}
                 <motion.div
                     className="text-center mt-16"
                     initial={{ opacity: 0, y: 20 }}
@@ -108,13 +106,9 @@ export function FeaturedProjects() {
                     viewport={{ once: true }}
                 >
                     <Button asChild size="lg" className="font-semibold">
-                        <a
-                            href="https://github.com/redaelhadfi"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Explore More on GitHub <ArrowRight className="w-5 h-5 ml-2" />
-                        </a>
+                        <Link href="/projects">
+                            View All Projects <ArrowRight className="w-5 h-5 ml-2" />
+                        </Link>
                     </Button>
                 </motion.div>
             </div>

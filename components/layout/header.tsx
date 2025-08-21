@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Download } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import Image from "next/image";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/experience", label: "Experience" },
   { href: "/contact", label: "Contact" },
@@ -130,10 +131,10 @@ export function Header() {
               className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-white border-0 shadow-lg hover:shadow-cyan-400/25 transition-all duration-300"
               asChild
             >
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="/resume">
                 Resume
-                <Download className="ml-2 h-3 w-3" />
-              </a>
+                <ArrowRight className="ml-2 h-3 w-3" />
+              </Link>
             </Button>
           </motion.div>
 
@@ -151,6 +152,7 @@ export function Header() {
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Header */}
+                                {/* Mobile Header */}
                 <div className="p-6 border-b border-white/10">
                   <Link 
                     href="/" 
@@ -196,10 +198,50 @@ export function Header() {
                     className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-white border-0"
                     asChild
                   >
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                      Download Resume
-                      <Download className="ml-2 h-4 w-4" />
-                    </a>
+                    <Link href="/resume">
+                      View Resume
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Mobile Navigation */}
+                <nav className="flex-1 p-6 space-y-3">
+                  {navItems.map((item, index) => (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center p-4 rounded-xl font-medium transition-all duration-500 group relative overflow-hidden ${
+                          isActive(item.href)
+                            ? "bg-gradient-to-r from-cyan-400/15 to-blue-500/10 text-cyan-300 border border-cyan-400/30 shadow-lg shadow-cyan-400/10"
+                            : "text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 border border-transparent hover:border-white/20"
+                        }`}
+                      >
+                        {/* Shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+                        
+                        <span className="relative z-10">{item.label}</span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                {/* Mobile Footer */}
+                <div className="p-6 border-t border-white/10">
+                  <Button 
+                    className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-white border-0"
+                    asChild
+                  >
+                    <Link href="/resume">
+                      View Resume
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </Button>
                 </div>
               </div>

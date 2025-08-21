@@ -1,7 +1,23 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Github, Linkedin, ExternalLink } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
+
+// Minimal custom Freelancer logo (origami-style bird) in single color to match icon set
+const FreelancerIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    role="img"
+    aria-label="Freelancer"
+    className={className}
+    fill="currentColor"
+  >
+    <polygon points="2 4 10 8 4 14" />
+    <polygon points="10 8 13 12 9 20 6 14" />
+    <polygon points="13 12 22 4 16 4" />
+    <polygon points="13 12 22 12 15 16" />
+  </svg>
+);
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -60,7 +76,7 @@ export function Footer() {
               </Button>
               <Button variant="outline" size="icon" asChild>
                 <Link href="https://www.freelancer.com/u/elhadfi" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="h-4 w-4" />
+                  <FreelancerIcon className="h-4 w-4" />
                   <span className="sr-only">Freelancer</span>
                 </Link>
               </Button>

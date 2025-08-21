@@ -65,6 +65,9 @@ const config: Config = {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'fade-up': 'fadeUp 0.5s ease-in-out',
         'scale-in': 'scaleIn 0.2s ease-in-out',
+        'spin-slow': 'spin-slow 4s linear infinite',
+        'camera-flash': 'camera-flash 3s ease-in-out infinite',
+        'photo-develop': 'photo-develop 2s ease-out',
       },
       keyframes: {
         fadeIn: {
@@ -78,6 +81,28 @@ const config: Config = {
         scaleIn: {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'camera-flash': {
+          '0%, 90%, 100%': { opacity: '0' },
+          '95%': { opacity: '1' },
+        },
+        'photo-develop': {
+          '0%': { 
+            opacity: '0', 
+            filter: 'blur(10px) brightness(2)'
+          },
+          '50%': {
+            opacity: '0.5',
+            filter: 'blur(5px) brightness(1.5)'
+          },
+          '100%': { 
+            opacity: '1', 
+            filter: 'blur(0px) brightness(1)'
+          },
         },
       },
     }

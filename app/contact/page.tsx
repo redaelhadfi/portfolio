@@ -9,23 +9,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { AnimatedBackground } from '@/components/3d/animated-background'
-import { 
-
-
-  Mail, 
-  Phone, 
-  MapPin, 
-  Calendar, 
-  Clock, 
-  Send, 
+import {
+  Mail,
+  MapPin,
+  Calendar,
+  Clock,
+  Send,
   CheckCircle,
-  Cpu, // Changed icon for AI
-  Server, // Changed icon for Backend
-  Code, // Changed icon for Full-Stack
+  Cpu,
+  Server,
+  Code,
   Github,
   Linkedin,
-
-
 } from 'lucide-react'
 
 // Updated with your real information
@@ -38,14 +33,14 @@ const contactMethods = [
     action: 'mailto:redaelhadfi1@gmail.com',
     primary: true,
   },
-  {
-    title: 'Phone',
-    description: 'Call for urgent inquiries',
-    value: '+212 684233470',
-    icon: Phone,
-    action: 'tel:+212684233470',
-    primary: false,
-  },
+  // {
+  //   title: 'Phone',
+  //   description: 'Call for urgent inquiries',
+  //   value: '+212 684233470',
+  //   icon: Phone,
+  //   action: 'tel:+212684233470',
+  //   primary: false,
+  // },
   {
     title: 'Location',
     description: 'Based in Rabat, Morocco',
@@ -316,9 +311,9 @@ export default function ContactPage() {
               <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="font-semibold mb-2">What is your availability for a PFE internship?</h3>
+                  <h3 className="font-semibold mb-2">What is your current availability?</h3>
                   <p className="text-sm text-muted-foreground">
-                    I am available to start immediately and am actively seeking a challenging Research Assistant or Software Engineering role for my final-year project.
+                    I&apos;m currently available for new freelance projects and open to full-time or long‑term contract opportunities. I typically respond within 24 hours and can start immediately.
                   </p>
                 </div>
                 <div>
