@@ -19,6 +19,8 @@ const projects: ProjectData[] = [
         color: "text-purple-400",
         bgColor: "bg-purple-400/10",
         borderColor: "border-purple-400/20",
+    liveHref: "#", // Placeholder until live deployment
+    githubHref: "https://github.com/redaelhadfi/ai-career-toolkit", // Adjust if different
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&auto=format&q=80",
     },
     {
@@ -47,6 +49,8 @@ const projects: ProjectData[] = [
         color: "text-green-400",
         bgColor: "bg-green-400/10",
         borderColor: "border-green-400/20",
+    liveHref: "#",
+    githubHref: "https://github.com/redaelhadfi/distributed-voting-system", // Placeholder repo name
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format&q=80",
     },
 ];
