@@ -11,17 +11,16 @@ const projects: ProjectData[] = [
     {
         id: "ai-career-toolkit",
         title: "AI-Powered Career Toolkit",
-        description:
-            "A full-stack career platform using Django and React to generate AI-powered resumes and provide interview preparation.",
+        description: "A full-stack career platform using Django and React to generate AI-powered resumes and provide interview preparation.",
         status: "In Development",
         tags: ["React", "Django", "OpenAI API", "JWT", "Docker", "AWS"],
         icon: Bot,
         color: "text-purple-400",
         bgColor: "bg-purple-400/10",
         borderColor: "border-purple-400/20",
-    liveHref: "#", // Placeholder until live deployment
-    githubHref: "#", // Disabled per request
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&auto=format&q=80",
+    liveHref: "#", // Placeholder until deployment
+    githubHref: "#" // Disabled: no public repository yet
     },
     {
         id: "ensa-khouribga-website",
@@ -41,17 +40,16 @@ const projects: ProjectData[] = [
     {
         id: "real-time-voting-system",
         title: "Distributed Real-Time Voting System",
-        description:
-            "Engineered a fault-tolerant, distributed backend capable of processing thousands of votes per second using Kafka for real-time data streaming.",
+        description: "Engineered a fault-tolerant, distributed backend capable of processing thousands of votes per second using Kafka for real-time data streaming.",
         status: "Conceptual Project",
         tags: ["Java", "Kafka", "React", "Docker"],
         icon: Vote,
         color: "text-green-400",
         bgColor: "bg-green-400/10",
         borderColor: "border-green-400/20",
-    liveHref: "#",
-    githubHref: "#", // Disabled per request
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format&q=80",
+    liveHref: "#", // No live demo yet
+    githubHref: "#" // Disabled: concept/no repo
     },
 ];
 

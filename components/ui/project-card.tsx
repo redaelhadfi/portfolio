@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, LucideIcon, Lock } from "lucide-react";
+import { ExternalLink, Github, LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -28,6 +28,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const liveDisabled = !project.liveHref || project.liveHref === "#";
+  const githubDisabled = !project.githubHref || project.githubHref === "#";
   return (
     <motion.div
       className="h-full group"
@@ -91,16 +93,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Action Buttons */}
         <CardFooter className="pt-0 flex gap-2">
-          {/* Live Demo Button */}
           <Button
-            asChild
+            {...(!liveDisabled && { asChild: true })}
             variant="outline"
             size="sm"
-            className="flex-1 hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
-            disabled={project.liveHref === "#"}
+            className={`flex-1 ${liveDisabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'hover:bg-primary/10'}`}
+            disabled={liveDisabled}
+            aria-disabled={liveDisabled}
           >
-            {project.liveHref === "#" ? (
-              <span className="flex items-center pointer-events-none select-none">
+            {liveDisabled ? (
+              <span className="flex items-center justify-center">
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Live Demo
               </span>
@@ -111,25 +113,26 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </a>
             )}
           </Button>
-          {/* GitHub Button or Private Badge */}
-          {project.githubHref === "#" ? (
-            <div className="flex-1 flex items-center justify-center rounded-md border border-dashed border-border/60 text-xs text-muted-foreground gap-2 py-1.5 bg-background/40 select-none">
-              <Lock className="w-4 h-4" />
-              <span className="uppercase tracking-wide">Private</span>
-            </div>
-          ) : (
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="flex-1 hover:bg-primary/10"
-            >
+          <Button
+            {...(!githubDisabled && { asChild: true })}
+            variant="outline"
+            size="sm"
+            className={`flex-1 ${githubDisabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'hover:bg-primary/10'}`}
+            disabled={githubDisabled}
+            aria-disabled={githubDisabled}
+          >
+            {githubDisabled ? (
+              <span className="flex items-center justify-center">
+                <Github className="w-4 h-4 mr-2" />
+                GitHub
+              </span>
+            ) : (
               <a href={project.githubHref} target="_blank" rel="noopener noreferrer">
                 <Github className="w-4 h-4 mr-2" />
                 GitHub
               </a>
-            </Button>
-          )}
+            )}
+          </Button>
         </CardFooter>
       </Card>
     </motion.div>
